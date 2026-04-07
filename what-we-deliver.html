@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What We Deliver — StratoSolve Technologies LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1f3d;
+  --navy-mid:#162646;
+  --navy-light:#1a2e52;
+  --gold:#c8a96e;
+  --gold-light:#e2c898;
+  --gold-dim:rgba(200,169,110,0.10);
+  --gold-border:rgba(200,169,110,0.25);
+  --white:#f5f3ee;
+  --white-dim:rgba(245,243,238,0.65);
+  --white-dimmer:rgba(245,243,238,0.32);
+  --white-ghost:rgba(245,243,238,0.055);
+  --border:rgba(200,169,110,0.18);
+  --border-light:rgba(245,243,238,0.1);
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fb:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy-mid);color:var(--white);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ── SECTION WRAPPER ── */
+.wwd-section{padding:100px 56px;position:relative;overflow:hidden}
+.wwd-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 80% 20%,rgba(44,74,124,0.2) 0%,transparent 70%)}
+.wwd-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,110,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,0.025) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+
+/* ── HEADER ── */
+.wwd-eyebrow{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.wwd-eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
+.wwd-headline{font-family:var(--fd);font-size:clamp(34px,4.5vw,56px);font-weight:300;line-height:1.1;letter-spacing:-0.5px;color:var(--white);margin-bottom:10px}
+.wwd-headline em{font-style:italic;color:var(--gold)}
+.wwd-sub{font-size:15px;color:var(--white-dim);max-width:680px;line-height:1.8;margin-bottom:16px}
+.wwd-cto-badge{display:inline-flex;align-items:center;gap:10px;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:100px;padding:8px 20px;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:64px}
+.wwd-cto-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* ── CATEGORY LABELS ── */
+.wwd-category{margin-bottom:8px;margin-top:56px}
+.wwd-category-label{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--white-dimmer);display:flex;align-items:center;gap:12px}
+.wwd-category-label::after{content:'';flex:1;height:1px;background:var(--border-light)}
+
+/* ── ACCORDION ── */
+.acc-item{border-bottom:1px solid var(--border-light);position:relative}
+.acc-item:first-of-type{border-top:1px solid var(--border-light)}
+
+.acc-trigger{display:flex;align-items:center;justify-content:space-between;padding:28px 0;cursor:pointer;user-select:none;gap:24px;transition:opacity .2s}
+.acc-trigger:hover .acc-title-text{color:var(--gold)}
+.acc-trigger:hover .acc-learn{opacity:1;transform:translateX(0)}
+
+.acc-left{display:flex;align-items:center;gap:20px;flex:1}
+.acc-number{font-family:var(--fd);font-size:13px;font-weight:400;color:var(--white-dimmer);min-width:24px;letter-spacing:0.5px}
+.acc-title-text{font-family:var(--fd);font-size:clamp(20px,2.2vw,28px);font-weight:400;color:var(--white);transition:color .25s;line-height:1.2}
+
+.acc-right{display:flex;align-items:center;gap:16px;flex-shrink:0}
+.acc-learn{font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--white-dimmer);opacity:0;transform:translateX(-8px);transition:opacity .25s,transform .25s;white-space:nowrap}
+.acc-item.open .acc-learn{opacity:0}
+
+.acc-icon{width:32px;height:32px;flex-shrink:0;border:1px solid var(--border);border-radius:50%;position:relative;transition:border-color .25s,background .25s}
+.acc-trigger:hover .acc-icon{border-color:var(--gold)}
+.acc-item.open .acc-icon{background:var(--gold-dim);border-color:var(--gold)}
+.acc-icon::before,.acc-icon::after{content:'';position:absolute;background:var(--white-dim);border-radius:1px;transition:transform .3s,opacity .3s}
+.acc-icon::before{width:12px;height:1px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.acc-icon::after{width:1px;height:12px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.acc-item.open .acc-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.acc-item.open .acc-icon::before{background:var(--gold)}
+
+.acc-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(0.4,0,0.2,1)}
+.acc-item.open .acc-body{max-height:900px}
+
+.acc-content{padding:0 0 40px 44px;display:grid;grid-template-columns:1.6fr 1fr;gap:56px}
+
+/* ── CONTENT INSIDE ACCORDION ── */
+.acc-desc{font-size:15px;color:var(--white-dim);line-height:1.85;margin-bottom:16px}
+.acc-desc:last-of-type{margin-bottom:0}
+.acc-desc strong{color:var(--white);font-weight:500}
+
+.acc-sidebar{}
+.acc-sidebar-section{margin-bottom:24px}
+.acc-sidebar-section:last-child{margin-bottom:0}
+.acc-sidebar-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+
+.acc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px}
+.acc-tag{font-size:11px;color:var(--white-dimmer);border:1px solid var(--border);border-radius:100px;padding:4px 12px;transition:border-color .2s,color .2s}
+.acc-tag:hover{border-color:var(--gold-border);color:var(--white-dim)}
+
+.acc-outcome{background:var(--gold-dim);border:1px solid var(--border);border-radius:4px;padding:14px 18px;font-size:13px;color:var(--white-dim);line-height:1.7;font-style:italic}
+.acc-outcome strong{font-style:normal;color:var(--gold);font-weight:500}
+
+.acc-cto-signal{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding:12px 16px;background:rgba(200,169,110,0.06);border-radius:4px;border-left:2px solid var(--gold)}
+.acc-cto-signal-label{font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.acc-cto-signal-text{font-size:12px;color:var(--white-dimmer);line-height:1.6}
+
+/* ── BOTTOM CTA STRIP ── */
+.wwd-cta-strip{margin-top:72px;padding-top:56px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.wwd-cta-left{}
+.wwd-cta-title{font-family:var(--fd);font-size:28px;font-weight:300;color:var(--white);margin-bottom:6px}
+.wwd-cta-title em{font-style:italic;color:var(--gold)}
+.wwd-cta-sub{font-size:14px;color:var(--white-dim)}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);font-family:var(--fb);font-size:14px;font-weight:500;letter-spacing:0.4px;padding:15px 32px;border-radius:2px;text-decoration:none;transition:background .2s,transform .15s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px)}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.08s}.rd2{transition-delay:.16s}.rd3{transition-delay:.24s}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .wwd-section{padding:64px 20px}
+  .acc-content{grid-template-columns:1fr;gap:28px;padding:0 0 32px 0}
+  .acc-left{gap:14px}
+  .acc-learn{display:none}
+  .wwd-cta-strip{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<section class="wwd-section" id="services">
+  <div class="wwd-bg"></div>
+  <div class="wwd-grid-lines"></div>
+
+  <!-- HEADER -->
+  <div class="wwd-eyebrow reveal">What We Deliver</div>
+  <h2 class="wwd-headline reveal rd1">Nine disciplines.<br><em>One fractional CTO.</em></h2>
+  <p class="wwd-sub reveal rd2">Every engagement draws on 12 years of enterprise experience across architecture, infrastructure, communications, security, and emerging technology — delivered by one senior practitioner, accountable to one outcome: yours.</p>
+  <div class="wwd-cto-badge reveal rd3">Fractional CTO Services — Mid-Market & Enterprise</div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 1: CORE EXECUTIVE DISCIPLINES     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="wwd-category reveal">
+    <div class="wwd-category-label">Core Executive Disciplines</div>
+  </div>
+
+  <!-- 1. Technology Roadmapping -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">01</span>
+        <span class="acc-title-text">Technology roadmapping & architecture governance</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Technology decisions made without a coherent multi-year vision are the most expensive kind. I partner with CIOs, CTOs, and founders to build a 12–36 month roadmap grounded in your business objectives, defensible to your board, and executable by your team.</p>
+          <p class="acc-desc">It begins with an honest assessment of your current architecture — strengths, hidden liabilities, and the gap between where your infrastructure is and where your business is going. What follows is a prioritized plan with clear sequencing logic: what gets built first, what gets deferred, and why. Every recommendation is weighed against business risk, capital efficiency, and execution capacity.</p>
+          <p class="acc-desc"><strong>A CFO can fund this roadmap. A board can interrogate it. Your team can execute it.</strong> That alignment is what separates a functional technology strategy from a document that lives in a folder.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">Technology Posture Assessment</span>
+              <span class="acc-tag">Multi-year Roadmapping</span>
+              <span class="acc-tag">Architecture Review</span>
+              <span class="acc-tag">Board-level Presentation</span>
+              <span class="acc-tag">Risk Prioritization</span>
+              <span class="acc-tag">Budget Alignment</span>
+              <span class="acc-tag">Governance Frameworks</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Organizations where technology investment decisions are being made reactively, where the current architecture cannot support the next phase of growth, or where a board requires a defensible technology strategy before approving capital.</div>
+          <div class="acc-cto-signal">
+            <div>
+              <div class="acc-cto-signal-label">Fractional CTO Advantage</div>
+              <div class="acc-cto-signal-text">A fractional CTO brings pattern recognition from multiple organizations at once — seeing failure modes and architecture traps before they materialize, not after.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Build vs Buy -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">02</span>
+        <span class="acc-title-text">Build vs. buy vs. partner decision frameworks</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Every scaling organization faces this decision constantly — and getting it wrong is one of the most expensive mistakes in enterprise technology. Building what should be bought creates technical debt and drains engineering capacity. Buying what should be built creates vendor lock-in that compounds over time. Partnering without the right framework produces misaligned contracts that take years to unwind.</p>
+          <p class="acc-desc">Having spent over a decade on the vendor side, I understand exactly how contracts are structured, where the hidden costs live, and what "strategic partnership" language actually means in practice.</p>
+          <p class="acc-desc"><strong>The result is a clear, defensible recommendation</strong> — with total cost of ownership modeling, lock-in risk assessment, and a build-out timeline — that gives your leadership team the confidence to commit capital without second-guessing it six months later.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">TCO Modeling</span>
+              <span class="acc-tag">Vendor Lock-in Assessment</span>
+              <span class="acc-tag">Contract Risk Analysis</span>
+              <span class="acc-tag">Platform Evaluation</span>
+              <span class="acc-tag">Make vs. License Analysis</span>
+              <span class="acc-tag">Strategic Partnership Structuring</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Organizations at decision points around platform selection, evaluating SaaS consolidation, considering internal build programs, or entering multi-year vendor contracts above $250K.</div>
+          <div class="acc-cto-signal">
+            <div>
+              <div class="acc-cto-signal-label">Fractional CTO Advantage</div>
+              <div class="acc-cto-signal-text">Prior experience as a vendor-side Sales Engineer means knowing which contract terms are negotiable, which aren't, and which ones look harmless but cost you leverage at renewal.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Technical Due Diligence -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">03</span>
+        <span class="acc-title-text">Technical due diligence & M&A technology integration</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">For PE-backed firms and organizations evaluating acquisitions — the technology stack is either a multiplier or a liability. Most buyers discover which one after the transaction closes. I assess architecture, infrastructure, technical debt, team capability, and vendor dependency before you commit capital, so what you're acquiring is what you think you're acquiring.</p>
+          <p class="acc-desc">Post-acquisition, I lead technology integration — stack rationalization, platform consolidation, team alignment, and migration sequencing that keeps both businesses operational through the transition.</p>
+          <p class="acc-desc"><strong>The window between LOI and close is narrow.</strong> The assessment needs to be fast, complete, and board-presentable.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">Pre-transaction Tech Assessment</span>
+              <span class="acc-tag">Architecture Risk Scoring</span>
+              <span class="acc-tag">Technical Debt Quantification</span>
+              <span class="acc-tag">Stack Rationalization</span>
+              <span class="acc-tag">Integration Roadmapping</span>
+              <span class="acc-tag">Team Capability Assessment</span>
+              <span class="acc-tag">Vendor Dependency Mapping</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> PE-backed organizations evaluating acquisitions, founders preparing for a transaction, or post-acquisition leadership teams facing platform consolidation and integration decisions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. AI & Automation Strategy -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">04</span>
+        <span class="acc-title-text">AI & automation strategy</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Every board is asking their leadership team the same question: what is our AI strategy? Most organizations don't have a credible answer — not because the technology isn't real, but because the gap between AI potential and AI implementation is wider than vendors make it appear.</p>
+          <p class="acc-desc">I bring hands-on experience with machine learning and LLM logic applied to enterprise communications, workflow automation, and customer experience — not as a theoretical exercise, but as production-deployed capability. The work I led at 8x8 included AI-driven CCaaS enhancements that directly influenced product roadmap, reduced manual intervention in contact center operations, and created measurable efficiency gains for enterprise customers.</p>
+          <p class="acc-desc"><strong>The deliverable is a pragmatic AI readiness assessment and implementation roadmap</strong> — prioritized by ROI, sequenced by organizational readiness, and presentable to a board that needs a defensible strategy, not a vendor pitch.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">AI Readiness Assessment</span>
+              <span class="acc-tag">LLM & ML Application Design</span>
+              <span class="acc-tag">Workflow Automation Strategy</span>
+              <span class="acc-tag">CCaaS AI Integration</span>
+              <span class="acc-tag">ROI Modeling for AI Investment</span>
+              <span class="acc-tag">AI Governance Frameworks</span>
+              <span class="acc-tag">Board-level AI Strategy</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Organizations under board pressure to define an AI strategy, leadership teams evaluating automation investments, and enterprises seeking to embed AI into contact center or operational workflows without overspending on unproven capability.</div>
+          <div class="acc-cto-signal">
+            <div>
+              <div class="acc-cto-signal-label">Fractional CTO Advantage</div>
+              <div class="acc-cto-signal-text">Honest AI strategy is currently rare. Most advisors either oversell or dismiss. A practitioner who has deployed AI in production enterprise environments can give you the grounded answer your board actually needs.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 2: INFRASTRUCTURE & ARCHITECTURE  -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="wwd-category reveal" style="margin-top:72px">
+    <div class="wwd-category-label">Infrastructure & Architecture</div>
+  </div>
+
+  <!-- 5. Large-scale Data Migration -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">05</span>
+        <span class="acc-title-text">Large-scale data migration & legacy modernization</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Migration failures are rarely a technology problem — they're an ownership problem. The plan looks clean on paper. The cutover is where organizations lose data integrity and business continuity, because the migration was treated as an IT project rather than a business-critical event requiring executive accountability.</p>
+          <p class="acc-desc">I have led data and system migrations at enterprise scale — from on-premise VoIP to cloud communications, from legacy CRM to modern SaaS, across multi-site and multi-region deployments where a failed cutover has immediate revenue consequences. Every migration is sequenced to protect continuity first, with rollback architecture designed before a single byte of data moves.</p>
+          <p class="acc-desc"><strong>The migration plan is only as good as the risk model beneath it.</strong> I build both — the execution plan and the risk framework that tells your leadership team exactly what happens at each stage, what the fallback is, and what success looks like before we begin.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">Migration Architecture Design</span>
+              <span class="acc-tag">Data Integrity Validation</span>
+              <span class="acc-tag">Cutover Planning & Execution</span>
+              <span class="acc-tag">Rollback Architecture</span>
+              <span class="acc-tag">Multi-site Coordination</span>
+              <span class="acc-tag">Legacy Platform Decommission</span>
+              <span class="acc-tag">Business Continuity Planning</span>
+              <span class="acc-tag">CRM / ERP Migration</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Organizations moving off legacy on-premise infrastructure, consolidating platforms post-acquisition, or executing cloud migrations where downtime carries direct revenue or compliance consequences.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Cloud Architecture & System Design -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">06</span>
+        <span class="acc-title-text">Cloud architecture & system design</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Cloud architecture is a business decision that happens to involve technology. Early choices become compounding constraints — limiting what you can build, inflating operating costs, and creating technical debt that eventually forces a costly rebuild. I design cloud environments for where your organization is going, not just where it is today.</p>
+          <p class="acc-desc">My experience spans public, private, and hybrid environments — architecting distributed SaaS systems for global deployments, designing high-availability configurations for organizations with sub-second uptime requirements, and building API integration layers that connect cloud platforms into coherent operational ecosystems rather than siloed tools requiring manual reconciliation.</p>
+          <p class="acc-desc"><strong>Every architecture decision is evaluated against three criteria:</strong> does it reduce operational risk, does it support the business at 3x current scale, and can your team operate it independently after the engagement concludes? Designs that fail the third question are redesigned.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">Public / Private / Hybrid Cloud</span>
+              <span class="acc-tag">Distributed SaaS Architecture</span>
+              <span class="acc-tag">High-availability Design</span>
+              <span class="acc-tag">API Integration Architecture</span>
+              <span class="acc-tag">Multi-region Deployment</span>
+              <span class="acc-tag">Cloud Cost Optimization</span>
+              <span class="acc-tag">Scalability Planning</span>
+              <span class="acc-tag">Disaster Recovery Design</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> SaaS companies scaling infrastructure ahead of enterprise sales cycles, organizations modernizing legacy on-premise environments, and businesses requiring global cloud architecture across multiple regions and regulatory jurisdictions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. LAN / On-Net System Design -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">07</span>
+        <span class="acc-title-text">LAN / on-net system design & network strategy</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">Cloud transformations routinely fail at the network layer — not because the platform was wrong, but because the LAN and WAN infrastructure beneath it was never designed to carry the load. SaaS reliability issues, call quality degradation, and latency problems that appear post-migration are almost always symptoms of a network that was excluded from the architecture conversation.</p>
+          <p class="acc-desc">I design LAN and on-net environments as an integrated component of the cloud and communications architecture — not a separate workstream handled after the fact. This includes QoS configuration for real-time voice and video traffic, SD-WAN strategy for multi-site organizations, SIP trunk design that holds quality under load, and carrier selection that matches reliability requirements to cost constraints.</p>
+          <p class="acc-desc"><strong>Network design is invisible when it works and catastrophic when it doesn't.</strong> It gets built correctly at the foundation, or it gets rebuilt expensively later.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">LAN Architecture Design</span>
+              <span class="acc-tag">WAN Optimization</span>
+              <span class="acc-tag">SD-WAN Strategy</span>
+              <span class="acc-tag">QoS Configuration</span>
+              <span class="acc-tag">SIP Trunk Design</span>
+              <span class="acc-tag">Carrier Selection & Coordination</span>
+              <span class="acc-tag">Multi-site Network Design</span>
+              <span class="acc-tag">Redundancy & Failover</span>
+              <span class="acc-tag">Network Security Posture</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Multi-location enterprises, organizations experiencing SaaS reliability or call quality issues, and businesses planning cloud migrations where network infrastructure has not been assessed as part of the architecture.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 3: COMMUNICATIONS & PLATFORMS     -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="wwd-category reveal" style="margin-top:72px">
+    <div class="wwd-category-label">Communications & Platform Expertise</div>
+  </div>
+
+  <!-- 8. UCaaS / CCaaS -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">08</span>
+        <span class="acc-title-text">Cloud communications & voice platforms (UCaaS / CCaaS)</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">UCaaS and CCaaS migrations fail when business requirements aren't mapped to architecture before deployment begins. I've seen this failure mode from both sides — as the vendor-side engineer who inherited poorly scoped deployments, and as the senior technical lead who designed the architectures that held. The difference is almost always in discovery and design, not the technology selected.</p>
+          <p class="acc-desc">I have led enterprise communications deployments across North America, EMEA, APAC, LATAM, and AUS/NZ — including two years as the sole technical consultant for all APAC and AUS/NZ customers at 8x8, reporting directly to global engineering leadership. That experience spans SIP trunk design and carrier coordination through AI-enhanced contact center configuration and CRM integration at production scale.</p>
+          <p class="acc-desc"><strong>Communications infrastructure is a revenue-critical system.</strong> A contact center outage means customer churn. Call quality degradation means lost enterprise deals. The architecture needs to be designed by someone who has lived the consequences of getting it wrong.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">UCaaS Architecture</span>
+              <span class="acc-tag">CCaaS Design & Deployment</span>
+              <span class="acc-tag">SIP & Carrier Coordination</span>
+              <span class="acc-tag">IVR & Call Flow Design</span>
+              <span class="acc-tag">AI-enhanced Contact Center</span>
+              <span class="acc-tag">Global Rollouts</span>
+              <span class="acc-tag">CRM Integration</span>
+              <span class="acc-tag">8x8 · Zoom · Five9</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Contact center operators, SaaS companies, multi-location enterprises, and global organizations requiring enterprise-grade communications infrastructure built for scale, compliance, and uptime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- CATEGORY 4: COMPLIANCE, SECURITY, PAYMENTS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="wwd-category reveal" style="margin-top:72px">
+    <div class="wwd-category-label">Compliance, Security & Revenue Operations</div>
+  </div>
+
+  <!-- 9. Compliance & Security -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">09</span>
+        <span class="acc-title-text">Compliance-driven solution design & security architecture</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">In regulated industries, compliance is not a layer added on top of architecture — it is a foundation constraint that every design decision must account for from the first whiteboard session. Organizations that treat it as an afterthought spend years and capital retrofitting systems that were never built to meet the requirements they're legally obligated to satisfy.</p>
+          <p class="acc-desc">I design enterprise solutions for healthcare, financial services, and regulated verticals where HIPAA, PCI DSS, SOC 2, and regional data residency requirements shape the architecture itself — producing infrastructure that satisfies auditors and legal counsel without creating operational friction in the process.</p>
+          <p class="acc-desc"><strong>As a fractional CTO, I translate compliance requirements into risk language your board can act on</strong> — quantifying the financial exposure of current gaps and presenting a remediation roadmap your CFO can fund.</p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">HIPAA Architecture</span>
+              <span class="acc-tag">PCI DSS Design</span>
+              <span class="acc-tag">SOC 2 Alignment</span>
+              <span class="acc-tag">Security-first Architecture</span>
+              <span class="acc-tag">Data Residency Compliance</span>
+              <span class="acc-tag">Risk Quantification</span>
+              <span class="acc-tag">Board-level Risk Reporting</span>
+              <span class="acc-tag">Vendor Security Assessment</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Healthcare organizations, financial services firms, payment processors, and any enterprise operating in a regulated environment where non-compliance carries legal liability, financial penalties, or reputational consequence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Payments & Systems Integration -->
+  <div class="acc-item">
+    <div class="acc-trigger" onclick="toggleAcc(this)">
+      <div class="acc-left">
+        <span class="acc-number">10</span>
+        <span class="acc-title-text">Payment processing, CRM/ERP integration & revenue operations</span>
+      </div>
+      <div class="acc-right">
+        <span class="acc-learn">Learn more</span>
+        <span class="acc-icon"></span>
+      </div>
+    </div>
+    <div class="acc-body">
+      <div class="acc-content">
+        <div>
+          <p class="acc-desc">The wrong payment platform erodes margins and compliance posture before leadership notices. Platform selection decisions that appear purely technical — which processor, which gateway, which integration model — carry financial, operational, and regulatory consequences that only surface after a contract is signed and volume scales.</p>
+          <p class="acc-desc">I design the API-based workflow architecture that connects payment infrastructure, CRM, ERP, and analytics into a coherent revenue operations stack — eliminating manual reconciliation, surfacing real-time operational intelligence, and positioning the organization for AI-enabled automation across the revenue cycle.</p>
+          <p class="acc-desc"><strong>The goal is an operational infrastructure where data flows automatically, reporting reflects reality, and your leadership team makes decisions based on information they trust.</strong></p>
+        </div>
+        <div class="acc-sidebar">
+          <div class="acc-sidebar-section">
+            <div class="acc-sidebar-label">Capabilities</div>
+            <div class="acc-tags">
+              <span class="acc-tag">Payment Platform Selection</span>
+              <span class="acc-tag">API Integration Architecture</span>
+              <span class="acc-tag">CRM Integration</span>
+              <span class="acc-tag">ERP Connectivity</span>
+              <span class="acc-tag">Revenue Operations Design</span>
+              <span class="acc-tag">Workflow Automation</span>
+              <span class="acc-tag">Analytics & Reporting Architecture</span>
+              <span class="acc-tag">Salesforce · HubSpot · NetSuite · Zendesk</span>
+            </div>
+          </div>
+          <div class="acc-outcome"><strong>Ideal for:</strong> Organizations scaling transaction volume, modernizing revenue operations, integrating acquired platforms, or facing operational inefficiency caused by disconnected business systems.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BOTTOM CTA ── -->
+  <div class="wwd-cta-strip reveal">
+    <div class="wwd-cta-left">
+      <div class="wwd-cta-title">Ready to bring a fractional CTO<br>into <em>your leadership team?</em></div>
+      <div class="wwd-cta-sub">Three founding client engagements available. No pitch. No deck. A 30-minute diagnostic to start.</div>
+    </div>
+    <a href="#contact" class="btn-primary">Apply for Founding Access ↗</a>
+  </div>
+
+</section>
+
+<script>
+function toggleAcc(trigger) {
+  const item = trigger.closest('.acc-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.acc-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
