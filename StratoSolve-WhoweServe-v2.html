@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who We Serve — StratoSolve Technologies LLC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1f3d;--navy-mid:#162646;--navy-light:#1a2e52;
+  --gold:#c8a96e;--gold-light:#e2c898;--gold-dim:rgba(200,169,110,0.10);--gold-border:rgba(200,169,110,0.25);
+  --white:#f5f3ee;--white-dim:rgba(245,243,238,0.65);--white-dimmer:rgba(245,243,238,0.32);--white-ghost:rgba(245,243,238,0.055);
+  --border:rgba(200,169,110,0.18);--border-light:rgba(245,243,238,0.1);
+  --fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:var(--fb);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ── SECTION ── */
+.who-section{padding:100px 56px;position:relative;overflow:hidden}
+.who-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 15% 60%,rgba(44,74,124,0.22) 0%,transparent 70%)}
+
+/* ── HEADER ── */
+.who-eyebrow{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.who-eyebrow::before{content:'';width:22px;height:1px;background:var(--gold)}
+.who-headline{font-family:var(--fd);font-size:clamp(34px,4.5vw,56px);font-weight:300;line-height:1.1;letter-spacing:-0.5px;color:var(--white);margin-bottom:10px}
+.who-headline em{font-style:italic;color:var(--gold)}
+.who-intro{font-size:15px;color:var(--white-dim);max-width:640px;line-height:1.8;margin-bottom:64px}
+
+/* ── VERTICAL GRID ── */
+.vertical-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:2px}
+.vertical-grid-bottom{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-top:none;border-radius:0 0 4px 4px;overflow:hidden}
+
+.v-card{background:var(--navy);padding:32px 28px;position:relative;transition:background .25s;cursor:default}
+.v-card:hover{background:var(--navy-mid)}
+.v-card-accent{position:absolute;top:0;left:0;width:2px;height:0;background:var(--gold);transition:height .3s ease}
+.v-card:hover .v-card-accent{height:100%}
+
+.v-tag{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;opacity:0.7}
+.v-title{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--white);margin-bottom:10px;line-height:1.2}
+.v-desc{font-size:13px;color:var(--white-dim);line-height:1.75}
+.v-signal{display:flex;align-items:flex-start;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border-light)}
+.v-signal-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:6px;opacity:0.6}
+.v-signal-text{font-size:12px;color:var(--white-dimmer);line-height:1.55;font-style:italic}
+
+/* ── TRIGGER EVENTS ── */
+.trigger-section{margin-top:64px;padding-top:56px;border-top:1px solid var(--border-light)}
+.trigger-label{font-size:10px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:var(--white-dimmer);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.trigger-label::after{content:'';flex:1;height:1px;background:var(--border-light)}
+.trigger-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.trigger-item{background:var(--white-ghost);border:1px solid var(--border-light);border-radius:4px;padding:20px 22px;transition:border-color .2s,background .2s}
+.trigger-item:hover{border-color:var(--gold-border);background:var(--gold-dim)}
+.trigger-icon{font-family:var(--fd);font-size:26px;color:var(--gold);opacity:0.35;line-height:1;margin-bottom:10px}
+.trigger-title{font-size:13px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.3}
+.trigger-desc{font-size:12px;color:var(--white-dimmer);line-height:1.65}
+
+/* ── STAKEHOLDERS ── */
+.stakeholder-wrap{margin-top:52px;padding-top:44px;border-top:1px solid var(--border-light)}
+.stakeholder-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.stakeholder-pills{display:flex;flex-wrap:wrap;gap:8px}
+.stakeholder-pill{font-size:13px;color:var(--white-dim);border:1px solid var(--border);border-radius:100px;padding:8px 18px;transition:border-color .2s,color .2s;cursor:default}
+.stakeholder-pill:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.07s}.rd2{transition-delay:.14s}.rd3{transition-delay:.21s}.rd4{transition-delay:.28s}
+
+/* ── MOBILE ── */
+@media(max-width:960px){
+  .who-section{padding:64px 20px}
+  .vertical-grid{grid-template-columns:1fr}
+  .vertical-grid-bottom{grid-template-columns:1fr 1fr}
+  .trigger-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:540px){
+  .vertical-grid-bottom{grid-template-columns:1fr}
+  .trigger-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<section class="who-section" id="who">
+  <div class="who-bg"></div>
+
+  <!-- HEADER -->
+  <div class="who-eyebrow reveal">Who We Serve</div>
+  <h2 class="who-headline reveal rd1">The organizations that<br>call when the stakes<br><em>are highest.</em></h2>
+  <p class="who-intro reveal rd2">StratoSolve engages at inflection points — when technology decisions carry board-level consequence, when a wrong call costs more than a right call saves, and when leadership needs a senior technical partner who is accountable to the outcome, not to a vendor.</p>
+
+  <!-- TOP ROW — 3 COLUMNS -->
+  <div class="vertical-grid reveal rd3">
+
+    <!-- SaaS & Cloud Platforms -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Software & Cloud</div>
+      <div class="v-title">SaaS & Cloud-native Platforms</div>
+      <div class="v-desc">Scaling SaaS organizations hit a predictable ceiling: the architecture that got you to Series B cannot carry you to Series C and beyond. Customer-facing reliability degrades, engineering velocity slows, and enterprise prospects begin failing your security reviews. The cost of that ceiling — in deals lost and talent attrition — compounds every quarter it goes unaddressed.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: infrastructure is limiting enterprise sales, SLAs are under pressure, or a funding round requires technical due diligence readiness.</div></div>
+    </div>
+
+    <!-- Financial Services -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Financial Services</div>
+      <div class="v-title">Financial Services & Fintech</div>
+      <div class="v-desc">In financial services, technology failure triggers regulatory scrutiny before it triggers an IT ticket. Payment processing errors, data breach exposure, and audit failures are not operational problems — they are existential ones. Organizations in this vertical require technology leadership that treats risk as a financial variable, not a technical checklist item.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: PCI DSS or SOC 2 scope expands, a new payment rail is introduced, or audit findings require executive-level remediation ownership.</div></div>
+    </div>
+
+    <!-- Healthcare -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Healthcare & Life Sciences</div>
+      <div class="v-title">Healthcare & Regulated Providers</div>
+      <div class="v-desc">HIPAA, HITRUST, and state-level data residency requirements do not allow for iteration. A system that is built first and made compliant second costs multiples more than one designed correctly from the start — in remediation costs, legal exposure, and the operational disruption of retrofitting a live clinical environment. Healthcare organizations need architecture that was never not compliant.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: a new platform is being evaluated, a telehealth or patient data initiative is launching, or a compliance gap is identified ahead of a regulatory review.</div></div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM ROW — 4 COLUMNS -->
+  <div class="vertical-grid-bottom reveal rd4">
+
+    <!-- PE-backed -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Private Equity</div>
+      <div class="v-title">PE Portfolio & Board-driven Organizations</div>
+      <div class="v-desc">Private equity creates a specific kind of technology urgency. Value creation timelines are compressed. Boards ask questions that internal IT teams cannot answer at the speed required. Pre-transaction readiness, post-acquisition integration, and exit preparation each demand a different type of senior technical judgment — often without the luxury of a 90-day onboarding window.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: a portfolio company lacks technology leadership, a deal is in diligence, or an integration is stalled post-close.</div></div>
+    </div>
+
+    <!-- Manufacturing & Industrial -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Industrial & Operations</div>
+      <div class="v-title">Manufacturing & Industrial Operations</div>
+      <div class="v-desc">Manufacturing organizations carry some of the highest technology debt in enterprise — legacy ERP systems, siloed plant data, and supply chain visibility gaps that inhibit the real-time decision-making modern operations demand. Digital transformation in this sector requires a practitioner who understands that uptime is revenue and that a failed system rollout during peak production is not an IT inconvenience.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: ERP modernization is stalled, OT/IT convergence is creating security exposure, or supply chain digitization has been approved but lacks technical leadership.</div></div>
+    </div>
+
+    <!-- Professional Services -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Professional Services</div>
+      <div class="v-title">Professional Services & Legal Tech</div>
+      <div class="v-desc">Law firms, consulting organizations, and professional services practices face a technology inflection point that is no longer optional: clients expect digital service delivery, security due diligence is now a prerequisite for enterprise engagements, and talent acquisition increasingly requires modern infrastructure. These organizations typically lack an internal technical executive — and the decisions they're making now will define their competitive position for the next decade.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: a firm is modernizing client-facing platforms, consolidating after a merger, or responding to a client security questionnaire that exposed gaps in their posture.</div></div>
+    </div>
+
+    <!-- Multi-location & Global -->
+    <div class="v-card">
+      <div class="v-card-accent"></div>
+      <div class="v-tag">Global & Multi-site</div>
+      <div class="v-title">Multi-location & Global Enterprises</div>
+      <div class="v-desc">Geographic scale multiplies every infrastructure decision — carrier relationships, data sovereignty requirements, latency constraints, and regional compliance obligations compound in ways that a single-site architecture team cannot anticipate. Organizations operating across multiple countries or dozens of locations need a technical leader who has managed this complexity in production, not in theory.</div>
+      <div class="v-signal"><div class="v-signal-dot"></div><div class="v-signal-text">Typically engaged when: a new region is being opened, a global communications platform is being standardized, or regional compliance obligations are creating operational inconsistency.</div></div>
+    </div>
+
+  </div>
+
+  <!-- TRIGGER EVENTS STRIP -->
+  <div class="trigger-section reveal">
+    <div class="trigger-label">When Organizations Typically Call</div>
+    <div class="trigger-grid">
+
+      <div class="trigger-item">
+        <div class="trigger-icon">I</div>
+        <div class="trigger-title">Leadership vacuum</div>
+        <div class="trigger-desc">CTO departure, extended vacancy, or a technology function that has outgrown its current leadership. The board needs someone in the room now — not in six months after a search cycle concludes.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">II</div>
+        <div class="trigger-title">Transaction in motion</div>
+        <div class="trigger-desc">M&A diligence, pre-IPO readiness, or a PE-driven value creation initiative. Technical assessment and integration leadership with the speed a deal timeline demands.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">III</div>
+        <div class="trigger-title">Platform at its limit</div>
+        <div class="trigger-desc">A system that worked at 200 users is failing at 2,000. A migration that has been deferred is now urgent. A legacy platform is blocking a contract with an enterprise prospect.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">IV</div>
+        <div class="trigger-title">Board asking about AI</div>
+        <div class="trigger-desc">Leadership needs a credible, grounded answer on AI readiness and implementation priority — not a vendor demonstration. The board wants a strategy, not a pilot program with no path to ROI.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">V</div>
+        <div class="trigger-title">Compliance pressure</div>
+        <div class="trigger-desc">An audit finding, a customer security review, or a regulatory change has created an obligation that the current technical team lacks the seniority to own at the executive level.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">VI</div>
+        <div class="trigger-title">Vendor contract expiring</div>
+        <div class="trigger-desc">A multi-year platform contract is approaching renewal — or a vendor relationship has degraded and a replacement is being evaluated. Independent analysis before signing matters more than it does during.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">VII</div>
+        <div class="trigger-title">Growth outpacing structure</div>
+        <div class="trigger-desc">Headcount has scaled but the technology organization has not kept pace. Manual processes, shadow IT, and fragmented tooling are creating operational drag that is now visible at the leadership level.</div>
+      </div>
+
+      <div class="trigger-item">
+        <div class="trigger-icon">VIII</div>
+        <div class="trigger-title">Post-acquisition stall</div>
+        <div class="trigger-desc">Two companies closed. Two technology stacks remain. Integration is behind schedule, the combined team is losing productivity, and leadership needs someone to take ownership of the technical path forward.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAKEHOLDERS -->
+  <div class="stakeholder-wrap reveal">
+    <div class="stakeholder-label">Decision-makers We Work With Directly</div>
+    <div class="stakeholder-pills">
+      <span class="stakeholder-pill">CIO</span>
+      <span class="stakeholder-pill">CTO</span>
+      <span class="stakeholder-pill">CFO</span>
+      <span class="stakeholder-pill">CEO & Founders</span>
+      <span class="stakeholder-pill">COO</span>
+      <span class="stakeholder-pill">Board Members</span>
+      <span class="stakeholder-pill">PE Operating Partners</span>
+      <span class="stakeholder-pill">VP of IT / Infrastructure</span>
+      <span class="stakeholder-pill">VP of Engineering</span>
+      <span class="stakeholder-pill">RVP</span>
+      <span class="stakeholder-pill">Sr. Director of Technology</span>
+      <span class="stakeholder-pill">Director of Operations</span>
+      <span class="stakeholder-pill">General Counsel</span>
+    </div>
+  </div>
+
+</section>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
