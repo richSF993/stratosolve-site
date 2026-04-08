@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Section Spec — StratoSolve Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f1f3d;--navy-mid:#162646;--navy-light:#1a2e52;
+  --gold:#c8a96e;--gold-light:#e2c898;--gold-dim:rgba(200,169,110,0.10);--gold-border:rgba(200,169,110,0.25);
+  --white:#f5f3ee;--white-dim:rgba(245,243,238,0.65);--white-dimmer:rgba(245,243,238,0.32);--white-ghost:rgba(245,243,238,0.055);
+  --border:rgba(200,169,110,0.18);--border-light:rgba(245,243,238,0.1);
+  --fd:'Cormorant Garamond',Georgia,serif;--fb:'Outfit',sans-serif;
+}
+body{background:#f0ede8;font-family:var(--fb);font-weight:300;overflow-x:hidden;padding:40px 32px}
+
+/* ── DOC HEADER ── */
+.doc-header{margin-bottom:40px;padding-bottom:28px;border-bottom:1px solid rgba(0,0,0,0.1)}
+.doc-title{font-family:var(--fd);font-size:32px;font-weight:300;color:#0f1f3d;margin-bottom:6px}
+.doc-title span{color:var(--gold)}
+.doc-meta{font-size:13px;color:#888;margin-bottom:4px}
+
+/* ── SECTION LABELS ── */
+.spec-section{margin-bottom:48px}
+.spec-heading{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#999;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.spec-heading::after{content:'';flex:1;height:1px;background:rgba(0,0,0,0.08)}
+
+/* ── MOCKUP FRAME ── */
+.mockup-frame{border-radius:8px;overflow:hidden;box-shadow:0 2px 20px rgba(0,0,0,0.12);margin-bottom:12px}
+.mockup-tag{font-size:11px;color:#888;margin-bottom:28px;font-style:italic}
+
+/* ── HERO MOCKUP ── */
+.hero-mock{background:var(--navy);min-height:560px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(200,169,110,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,169,110,0.04) 1px,transparent 1px);background-size:64px 64px}
+.hero-glow{position:absolute;top:-80px;right:-80px;width:500px;height:500px;background:radial-gradient(circle,rgba(44,74,124,0.35) 0%,transparent 70%)}
+
+/* NAV */
+.mock-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;position:relative;z-index:2;border-bottom:1px solid var(--border)}
+.mock-logo-box{display:flex;align-items:center;gap:10px}
+.mock-logo-placeholder{width:32px;height:32px;border:1px solid var(--gold-border);border-radius:3px;display:flex;align-items:center;justify-content:center}
+.mock-logo-inner{width:14px;height:14px;background:var(--gold);opacity:0.5;border-radius:1px}
+.mock-logo-note{font-size:11px;color:var(--white-dimmer);font-style:italic;letter-spacing:0.3px}
+.mock-nav-right{display:flex;align-items:center;gap:28px}
+.mock-nav-link{font-size:11px;color:var(--white-dimmer);letter-spacing:0.8px;text-transform:uppercase}
+.mock-nav-cta{background:var(--gold);color:var(--navy);font-size:11px;font-weight:500;padding:8px 18px;border-radius:2px;letter-spacing:0.4px}
+
+/* HERO CONTENT */
+.hero-content{flex:1;padding:72px 48px 56px;position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;max-width:760px}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-headline{font-family:var(--fd);font-size:58px;font-weight:300;line-height:1.06;letter-spacing:-0.8px;color:var(--white);margin-bottom:28px}
+.hero-headline em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:16px;font-weight:300;color:var(--white-dim);line-height:1.75;margin-bottom:40px;max-width:520px}
+.hero-cta-row{display:flex;align-items:center;gap:20px;margin-bottom:56px}
+.mock-btn-primary{background:var(--gold);color:var(--navy);font-family:var(--fb);font-size:14px;font-weight:500;padding:14px 32px;border-radius:2px;letter-spacing:0.3px;display:inline-block}
+.mock-btn-ghost{font-size:14px;color:var(--white-dim);border-bottom:1px solid var(--gold-border);padding-bottom:2px}
+.hero-stats{display:flex;gap:48px;padding-top:36px;border-top:1px solid var(--border-light)}
+.stat-num{font-family:var(--fd);font-size:40px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:5px}
+.stat-label{font-size:11px;color:var(--white-dimmer);letter-spacing:0.5px;text-transform:uppercase}
+
+/* ── SPEC TABLE ── */
+.spec-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:8px}
+.spec-table th{text-align:left;padding:10px 14px;background:#0f1f3d;color:var(--gold);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.spec-table th:first-child{border-radius:4px 0 0 0}
+.spec-table th:last-child{border-radius:0 4px 0 0}
+.spec-table td{padding:10px 14px;border-bottom:1px solid rgba(0,0,0,0.06);vertical-align:top;color:#333;line-height:1.6}
+.spec-table tr:last-child td{border-bottom:none}
+.spec-table tr:nth-child(even) td{background:rgba(0,0,0,0.02)}
+.spec-table td:first-child{font-weight:500;color:#0f1f3d;white-space:nowrap;width:180px}
+.spec-table td code{font-family:monospace;font-size:12px;background:rgba(0,0,0,0.06);padding:1px 6px;border-radius:3px;color:#0f1f3d}
+
+/* ── COPY BLOCKS ── */
+.copy-block{background:#0f1f3d;border-radius:6px;padding:24px 28px;margin-bottom:8px}
+.copy-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;opacity:0.8}
+.copy-headline{font-family:var(--fd);font-size:28px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:4px}
+.copy-headline em{font-style:italic;color:var(--gold)}
+.copy-sub{font-size:14px;color:var(--white-dim);line-height:1.7;margin-top:10px}
+.copy-eyebrow-text{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.copy-cta-text{font-size:13px;font-weight:500;color:var(--navy);background:var(--gold);display:inline-block;padding:8px 20px;border-radius:2px;margin-top:12px}
+
+/* ── NOTES ── */
+.note-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.note-card{background:#fff;border-radius:6px;padding:18px 20px;border:0.5px solid rgba(0,0,0,0.1)}
+.note-card-label{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.note-card-text{font-size:13px;color:#444;line-height:1.65}
+
+/* ── FOOTER ── */
+.doc-footer{margin-top:52px;padding-top:24px;border-top:1px solid rgba(0,0,0,0.08);font-size:12px;color:#aaa;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+
+<!-- DOC HEADER -->
+<div class="doc-header">
+  <div class="doc-title">Strato<span>Solve</span> Technologies LLC</div>
+  <div class="doc-meta">Hero Section — Layout Specification & Developer Reference</div>
+  <div class="doc-meta">For implementation in Squarespace · Matches V4 design system</div>
+</div>
+
+<!-- SECTION 1: LIVE MOCKUP -->
+<div class="spec-section">
+  <div class="spec-heading">Section 1 — Live Hero Mockup</div>
+
+  <div class="mockup-frame">
+    <div class="hero-mock">
+      <div class="hero-grid-bg"></div>
+      <div class="hero-glow"></div>
+
+      <!-- NAV -->
+      <div class="mock-nav">
+        <div class="mock-logo-box">
+          <div class="mock-logo-placeholder"><div class="mock-logo-inner"></div></div>
+          <div class="mock-logo-note">← Replace with logo file</div>
+        </div>
+        <div class="mock-nav-right">
+          <span class="mock-nav-link">About</span>
+          <span class="mock-nav-link">Services</span>
+          <span class="mock-nav-link">Who We Serve</span>
+          <span class="mock-nav-link">Why Us</span>
+          <span class="mock-nav-cta">Book a Call</span>
+        </div>
+      </div>
+
+      <!-- HERO CONTENT -->
+      <div class="hero-content">
+        <div class="hero-eyebrow">Fractional CTO · Oakland, CA</div>
+        <h1 class="hero-headline">
+          12 years inside the<br>
+          enterprise technology industry.<br>
+          Now working exclusively for<br>
+          the organizations on<br>
+          <em>the other side of it.</em>
+        </h1>
+        <p class="hero-sub">Independent advisory. Senior-level execution. One practitioner, accountable throughout.</p>
+        <div class="hero-cta-row">
+          <span class="mock-btn-primary">Book a Strategy Call ↗</span>
+          <span class="mock-btn-ghost">Meet the Founder</span>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num">12+</div>
+            <div class="stat-label">Years Enterprise Experience</div>
+          </div>
+          <div>
+            <div class="stat-num">0%</div>
+            <div class="stat-label">Client Churn as Enterprise TAM</div>
+          </div>
+          <div>
+            <div class="stat-num">125%</div>
+            <div class="stat-label">Avg. Quota Attainment</div>
+          </div>
+          <div>
+            <div class="stat-num">4</div>
+            <div class="stat-label">Global Regions Served</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="mockup-tag">↑ Live rendered mockup — this is exactly how the hero should appear in Squarespace</div>
+</div>
+
+<!-- SECTION 2: COPY -->
+<div class="spec-section">
+  <div class="spec-heading">Section 2 — Exact Copy (paste as plain text)</div>
+
+  <div class="copy-block">
+    <div class="copy-label">Eyebrow — small text above headline</div>
+    <div class="copy-eyebrow-text">Fractional CTO · Oakland, CA</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Hero Headline — largest element on page</div>
+    <div class="copy-headline">
+      12 years inside the enterprise technology industry. Now working exclusively for the organizations on <em>the other side of it.</em>
+    </div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Subheadline — below headline, smaller size</div>
+    <div class="copy-sub">Independent advisory. Senior-level execution. One practitioner, accountable throughout.</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Primary CTA Button</div>
+    <div class="copy-cta-text">Book a Strategy Call ↗</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Secondary CTA — text link</div>
+    <div class="copy-sub" style="margin-top:0">Meet the Founder</div>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-label">Credential Stats — 4 items</div>
+    <div class="copy-sub" style="margin-top:0;line-height:2">
+      12+ · Years Enterprise Experience<br>
+      0% · Client Churn as Enterprise TAM<br>
+      125% · Avg. Quota Attainment<br>
+      4 · Global Regions Served
+    </div>
+    <div style="font-size:11px;color:rgba(245,243,238,0.3);margin-top:12px;font-style:italic">Note: All stats attributed to prior 8x8 career. Add disclaimer below stats or in founder section.</div>
+  </div>
+</div>
+
+<!-- SECTION 3: DESIGN SPECS -->
+<div class="spec-section">
+  <div class="spec-heading">Section 3 — Design Specifications</div>
+
+  <table class="spec-table">
+    <tr><th>Element</th><th>Specification</th></tr>
+    <tr><td>Background color</td><td><code>#0f1f3d</code> — Navy. No stock photography.</td></tr>
+    <tr><td>Background texture</td><td>Subtle grid lines: <code>rgba(200,169,110,0.04)</code> at 64px intervals. Optional — remove if Squarespace doesn't support.</td></tr>
+    <tr><td>Display font</td><td>Cormorant Garamond · weight 300 (Light) · Google Fonts</td></tr>
+    <tr><td>Body font</td><td>Outfit · weight 300/400/500 · Google Fonts</td></tr>
+    <tr><td>Headline size</td><td>Largest element on page. Suggested: 56–72px desktop, 36–44px mobile</td></tr>
+    <tr><td>Headline color</td><td><code>#f5f3ee</code> — Off-white</td></tr>
+    <tr><td>Italic / emphasis color</td><td><code>#c8a96e</code> — Gold. Apply to: "the other side of it." in headline</td></tr>
+    <tr><td>Eyebrow color</td><td><code>#c8a96e</code> — Gold · uppercase · wide letter-spacing</td></tr>
+    <tr><td>Subheadline color</td><td><code>rgba(245,243,238,0.65)</code> — White at 65% opacity</td></tr>
+    <tr><td>CTA button background</td><td><code>#c8a96e</code> — Gold</td></tr>
+    <tr><td>CTA button text</td><td><code>#0f1f3d</code> — Navy · weight 500</td></tr>
+    <tr><td>CTA button radius</td><td><code>2px</code> — near-square, not rounded pill</td></tr>
+    <tr><td>Secondary CTA</td><td>Text link · <code>rgba(245,243,238,0.65)</code> · gold underline border</td></tr>
+    <tr><td>Stats divider</td><td>1px line · <code>rgba(245,243,238,0.10)</code> above stats strip</td></tr>
+    <tr><td>Stats numbers</td><td>Cormorant Garamond · weight 300 · 40px · <code>#c8a96e</code></td></tr>
+    <tr><td>Stats labels</td><td>Outfit · 11px · uppercase · <code>rgba(245,243,238,0.32)</code></td></tr>
+    <tr><td>Nav logo</td><td>Image file replacing all text. Company name does NOT appear as text in nav.</td></tr>
+    <tr><td>Nav links</td><td>Outfit · 12px · uppercase · letter-spacing 1px · <code>rgba(245,243,238,0.65)</code></td></tr>
+    <tr><td>Nav border</td><td>1px bottom · <code>rgba(200,169,110,0.18)</code></td></tr>
+    <tr><td>Hero min-height</td><td>100vh — full viewport height</td></tr>
+    <tr><td>Content max-width</td><td>760px — left-aligned, not centered</td></tr>
+    <tr><td>Section padding</td><td>72px top · 56px bottom · 48px sides (desktop)</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 4: HIERARCHY NOTES -->
+<div class="spec-section">
+  <div class="spec-heading">Section 4 — Layout Hierarchy & Developer Notes</div>
+
+  <div class="note-grid">
+    <div class="note-card">
+      <div class="note-card-label">Visual hierarchy — critical</div>
+      <div class="note-card-text">The headline must be the largest, heaviest element on the page. The company name appears ONLY as a logo in the nav — never as text in the hero. An executive landing on this page should read the message before they read the brand name.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-label">Alignment</div>
+      <div class="note-card-text">All hero content is left-aligned, not centered. Left alignment reads as authoritative and editorial. Centered hero text reads as marketing. This audience is C-suite — left-align everything.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-label">Headline line breaks</div>
+      <div class="note-card-text">The headline breaks across 5 lines on desktop as shown in the mockup. Allow it to reflow naturally on mobile — do not force line breaks on small screens. The italic gold emphasis on "the other side of it." must be preserved.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-label">Stats disclaimer</div>
+      <div class="note-card-text">The four credential stats (12+, 0%, 125%, 4) reflect Richard's prior career at 8x8, Inc. — not StratoSolve client results. A small disclaimer must appear either below the stats or in the Founder section. See Word document for exact disclaimer copy.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-label">No stock photography</div>
+      <div class="note-card-text">The background must be the solid navy color #0f1f3d — not a stock image. The transmission tower / sunset image currently on the live site must be removed. A subtle grid pattern overlay is optional.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-label">Mobile behavior</div>
+      <div class="note-card-text">On mobile: nav collapses to hamburger menu, headline scales down to 36–44px, stats stack 2x2, CTA buttons stack vertically. Headshot image (if added) hides on mobile — copy only on small screens.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: LINKS -->
+<div class="spec-section">
+  <div class="spec-heading">Section 5 — Links & Resources</div>
+  <table class="spec-table">
+    <tr><th>Resource</th><th>URL</th></tr>
+    <tr><td>Live site preview</td><td><code>https://richsf993.github.io/stratosolve-site</code></td></tr>
+    <tr><td>GitHub repository</td><td><code>https://github.com/richSF993/stratosolve-site</code></td></tr>
+    <tr><td>What We Deliver section</td><td><code>https://richsf993.github.io/stratosolve-site/what-we-deliver.html</code></td></tr>
+    <tr><td>Who We Serve section</td><td><code>https://richsf993.github.io/stratosolve-site/StratoSolve-WhoweServe-v2.html</code></td></tr>
+    <tr><td>Display font</td><td><code>https://fonts.google.com/specimen/Cormorant+Garamond</code></td></tr>
+    <tr><td>Body font</td><td><code>https://fonts.google.com/specimen/Outfit</code></td></tr>
+    <tr><td>Formspree (contact form)</td><td><code>https://formspree.io</code> — replace YOUR_FORM_ID in index.html</td></tr>
+    <tr><td>Calendly</td><td>Update placeholder URL in index.html with real scheduling link</td></tr>
+  </table>
+</div>
+
+<div class="doc-footer">
+  <span>StratoSolve Technologies LLC · Oakland, CA · contact@stratosolvetech.com</span>
+  <span>Hero Section Specification · Developer Reference Document</span>
+</div>
+
+</body>
+</html>
